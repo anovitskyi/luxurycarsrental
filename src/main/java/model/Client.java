@@ -9,8 +9,6 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "clients")
-@Getter
-@Setter
 public class Client
 {
     @Id
@@ -46,5 +44,55 @@ public class Client
         this.lastName = lastName;
         this.age = age;
         this.male = male;
+    }
+
+    public String getFirstName()
+    {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName)
+    {
+        this.firstName = firstName;
+    }
+
+    public String getLastName()
+    {
+        return lastName;
+    }
+
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
+
+    public int getAge()
+    {
+        return age;
+    }
+
+    public void setAge(int age)
+    {
+        this.age = age;
+    }
+
+    public boolean isMale()
+    {
+        return male;
+    }
+
+    public void setMale(boolean male)
+    {
+        this.male = male;
+    }
+
+    public Car getCar()
+    {
+        return car;
+    }
+
+    public void setCar(Car car)
+    {
+        this.car = car;
     }
 }

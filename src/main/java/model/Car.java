@@ -1,17 +1,12 @@
 package model;
 
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
 @Table(name = "cars")
-@Getter
-@Setter
 public class Car
 {
     @Id
@@ -50,5 +45,65 @@ public class Car
         this.year = year;
         this.price = price;
         this.isEnabled = true;
+    }
+
+    public String getCompany()
+    {
+        return company;
+    }
+
+    public void setCompany(String company)
+    {
+        this.company = company;
+    }
+
+    public String getModel()
+    {
+        return model;
+    }
+
+    public void setModel(String model)
+    {
+        this.model = model;
+    }
+
+    public int getYear()
+    {
+        return year;
+    }
+
+    public void setYear(int year)
+    {
+        this.year = year;
+    }
+
+    public double getPrice()
+    {
+        return price;
+    }
+
+    public void setPrice(double price)
+    {
+        this.price = price;
+    }
+
+    public boolean isEnabled()
+    {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled)
+    {
+        isEnabled = enabled;
+    }
+
+    public Date getReturningDate()
+    {
+        return returningDate;
+    }
+
+    public void setReturningDate(Date returningDate)
+    {
+        this.returningDate = returningDate;
     }
 }

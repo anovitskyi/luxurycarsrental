@@ -10,8 +10,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "rents")
-@Getter
-@Setter
 public class Rent
 {
     @Id
@@ -39,5 +37,35 @@ public class Rent
         this.client = client;
         this.car = car;
         this.date = date;
+    }
+
+    public Date getDate()
+    {
+        return date;
+    }
+
+    public void setDate(Date date)
+    {
+        this.date = date;
+    }
+
+    public Client getClient()
+    {
+        return client;
+    }
+
+    public void setClient(Client client)
+    {
+        this.client = client;
+    }
+
+    public Car getCar()
+    {
+        return car;
+    }
+
+    public void setCar(Car car)
+    {
+        this.car = car;
     }
 }
