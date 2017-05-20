@@ -32,7 +32,7 @@ public class Client
     @Column
     private boolean male;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id")
     private Car car;
 
@@ -47,6 +47,4 @@ public class Client
         this.age = age;
         this.male = male;
     }
-
-
 }
