@@ -21,13 +21,17 @@
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
           p:driverClassName="${driverClass}"
           p:url="${url}"
-          p:username="${username}"
-          p:password="${password}"
+          p:username="${db.username}"
+          p:password="${db.password}"
     />
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="annotatedPackages" value="model"/>
+        <property name="packagesToScan">
+            <list>
+                <value>model</value>
+            </list>
+        </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>

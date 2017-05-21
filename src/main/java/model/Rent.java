@@ -8,24 +8,24 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-@Entity
-@Table(name = "rents")
+//@Entity
+//@Table(name = "rents")
 public class Rent
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    //@Id
+   // @GeneratedValue(strategy = GenerationType.AUTO)
+   // @Column
     private Long id;
 
-    @Column
+   // @Column
     private Date date;
 
-    @Column
-    @NotNull
+   // @Column
+   // @NotNull
     private Client client;
 
-    @Column
-    @NotNull
+   // @Column
+   // @NotNull
     private Car car;
 
     public Rent()

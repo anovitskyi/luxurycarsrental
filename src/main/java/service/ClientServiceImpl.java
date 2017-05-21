@@ -14,7 +14,7 @@ public class ClientServiceImpl implements CommonService<Client>
 {
     @Autowired
     @Qualifier("clientDaoImpl")
-    CommonDao dao;
+    CommonDao<Client> dao;
 
     @Override
     public List<Client> getAll()
@@ -25,7 +25,7 @@ public class ClientServiceImpl implements CommonService<Client>
     @Override
     public Client get(int id)
     {
-        return (Client)dao.get(id);
+        return dao.get(id);
     }
 
     @Override

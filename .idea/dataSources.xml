@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="carrental@localhost" uuid="8736e4d3-8734-4652-ade1-5f6f122c9d9a">
+    <data-source source="LOCAL" name="restdb@localhost" uuid="30038ff7-2df8-4833-b55e-cab55890c1d2">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/carrental</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/restdb</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

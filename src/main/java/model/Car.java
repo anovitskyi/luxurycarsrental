@@ -1,6 +1,8 @@
 package model;
 
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -12,14 +14,16 @@ public class Car
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
 
     @Column
     @NotNull
+    @Length(min = 3, max = 15)
     private String company;
 
     @Column
     @NotNull
+    @Length(min = 3, max = 15)
     private String model;
 
     @Column
@@ -28,7 +32,7 @@ public class Car
     @Column
     private double price;
 
-    @Column
+    @Column(name = "is_enabled")
     private boolean isEnabled;
 
     @Column(name = "returning_date")

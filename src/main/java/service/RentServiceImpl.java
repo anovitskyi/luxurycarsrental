@@ -1,48 +1,42 @@
 package service;
 
+
 import dao.CommonDao;
-import model.Car;
+import dao.DaoImpl;
+import model.Rent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-
 @Service
-public class CarServiceImpl implements CommonService<Car>
+public class RentServiceImpl implements CommonService<Rent>
 {
     @Autowired
-    @Qualifier("carDaoImpl")
-    CommonDao<Car> dao;
+    @Qualifier("rentDaoImpl")
+    CommonDao<Rent> dao;
 
     @Override
-    public List<Car> getAll()
+    public List<Rent> getAll()
     {
-        List<Car> list = dao.getAll();
-        List<Car> result = new ArrayList<>();
-
-        for (Car car : list)
-            if (car.isEnabled())
-                result.add(car);
-        return result;
+        return dao.getAll();
     }
 
     @Override
-    public Car get(int id)
+    public Rent get(int id)
     {
         return dao.get(id);
     }
 
     @Override
-    public void add(Car param)
+    public void add(Rent param)
     {
         dao.add(param);
     }
 
     @Override
-    public void update(Car param)
+    public void update(Rent param)
     {
         dao.update(param);
     }

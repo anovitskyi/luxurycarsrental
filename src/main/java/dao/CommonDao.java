@@ -2,7 +2,7 @@ package dao;
 
 import java.util.List;
 
-public interface Dao<T>
+public interface CommonDao<T>
 {
     List<T> getAll();
     T get(int id);

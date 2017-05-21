@@ -3,10 +3,11 @@ package dao;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-@Repository
-public abstract class DaoImpl<T> implements Dao<T>
+
+@Transactional
+public abstract class DaoImpl<T> implements CommonDao<T>
 {
     @Autowired
     protected SessionFactory sessionFactory;
