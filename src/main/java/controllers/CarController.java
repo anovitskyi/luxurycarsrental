@@ -16,12 +16,12 @@ public class CarController
 {
     @Autowired
     @Qualifier("carServiceImpl")
-    CommonService service;
+    CommonService<Car> service;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Car getById(@PathVariable int id)
     {
-        return (Car)service.get(id);
+        return service.get(id);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
