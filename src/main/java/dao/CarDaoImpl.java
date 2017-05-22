@@ -12,6 +12,7 @@ import java.util.List;
 @Transactional
 public class CarDaoImpl extends DaoImpl<Car>
 {
+
     @Override
     public List<Car> getAll()
     {

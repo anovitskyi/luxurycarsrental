@@ -14,7 +14,6 @@ import java.util.List;
 public class CarServiceImpl implements CommonService<Car>
 {
     @Autowired
-    @Qualifier("carDaoImpl")
     CommonDao<Car> dao;
 
     @Override
@@ -48,8 +47,8 @@ public class CarServiceImpl implements CommonService<Car>
     }
 
     @Override
-    public void delete(int id)
+    public void delete(Car car)
     {
-        dao.delete(id);
+        dao.delete(car);
     }
 }

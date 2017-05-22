@@ -13,7 +13,6 @@ import java.util.List;
 public class ClientServiceImpl implements CommonService<Client>
 {
     @Autowired
-    @Qualifier("clientDaoImpl")
     CommonDao<Client> dao;
 
     @Override
@@ -41,8 +40,8 @@ public class ClientServiceImpl implements CommonService<Client>
     }
 
     @Override
-    public void delete(int id)
+    public void delete(Client param)
     {
-        dao.delete(id);
+        dao.delete(param);
     }
 }

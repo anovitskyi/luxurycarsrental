@@ -10,5 +10,5 @@ public interface CommonService<T>
 
     void add(T param);
     void update(T param);
-    void delete(int id);
+    void delete(T param);
 }

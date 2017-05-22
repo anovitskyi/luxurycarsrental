@@ -3,12 +3,10 @@ package controllers;
 
 import model.Car;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import service.CommonService;
 
 import javax.validation.Valid;
@@ -19,53 +17,74 @@ import java.util.List;
 public class CarController
 {
     @Autowired
-    @Qualifier("carServiceImpl")
     CommonService<Car> service;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Car getById(@PathVariable int id)
-    {
-        return service.get(id);
-    }
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public List<Car> getList()
+    public ResponseEntity<List<Car>> getList()
     {
-        return service.getAll();
+        List<Car> list = service.getAll();
+        if (list.isEmpty())
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        else
+            return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @RequestMapping(value = {"/add", "/update"}, method = RequestMethod.GET)
-    public Car add()
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Car> getById(@PathVariable int id)
     {
-        return new Car("", "", 0, 0);
+        Car car = service.get(id);
+        if (car == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        else
+            return new ResponseEntity<>(car, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public void add(@Valid Car car, BindingResult result)
+    public ResponseEntity<Void> add(@RequestBody @Valid Car car, BindingResult result)
     {
         if (result.hasErrors())
-        {
-
-        }
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         else
+        {
+            car.setEnabled(true);
             service.add(car);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void update(@PathVariable int id, @Valid Car car, BindingResult result)
+    public ResponseEntity<Void> update(@PathVariable int id, @RequestBody @Valid Car car, BindingResult result)
     {
         if (result.hasErrors())
-        {
-
-        }
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         else
-            service.update(car);
+        {
+            Car c = service.get(id);
+            if (c == null)
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            c.setCompany(car.getCompany());
+            c.setModel(car.getModel());
+            c.setYear(car.getYear());
+            c.setPrice(car.getPrice());
+            c.setEnabled(car.isEnabled());
+            c.setReturningDate(car.getReturningDate());
+            service.update(c);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable int id)
+    public ResponseEntity<Void> delete(@PathVariable int id)
     {
-        service.delete(id);
+        Car car = service.get(id);
+        if (car == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        else
+        {
+            service.delete(car);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
 }

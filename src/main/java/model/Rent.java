@@ -1,31 +1,27 @@
 package model;
 
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-//@Entity
-//@Table(name = "rents")
+@Entity
+@Table(name = "rents")
 public class Rent
 {
-    //@Id
-   // @GeneratedValue(strategy = GenerationType.AUTO)
-   // @Column
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
+    private int id;
 
-   // @Column
+    @Column
     private Date date;
 
-   // @Column
-   // @NotNull
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
     private Client client;
 
-   // @Column
-   // @NotNull
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
     private Car car;
 
     public Rent()

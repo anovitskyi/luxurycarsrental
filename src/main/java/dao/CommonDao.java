@@ -9,5 +9,5 @@ public interface CommonDao<T>
 
     void add(T param);
     void update(T param);
-    void delete(int id);
+    void delete(T param);
 }

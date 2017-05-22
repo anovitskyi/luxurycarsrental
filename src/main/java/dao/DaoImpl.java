@@ -15,7 +15,7 @@ public abstract class DaoImpl<T> implements CommonDao<T>
     @Override
     public void add(T param)
     {
-        sessionFactory.getCurrentSession().saveOrUpdate(param);
+        sessionFactory.getCurrentSession().save(param);
     }
 
     @Override
@@ -25,8 +25,9 @@ public abstract class DaoImpl<T> implements CommonDao<T>
     }
 
     @Override
-    public void delete(int id)
+    public void delete(T param)
     {
-        sessionFactory.getCurrentSession().delete(id);
+        sessionFactory.getCurrentSession().delete(param);
     }
+
 }

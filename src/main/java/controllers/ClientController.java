@@ -42,30 +42,40 @@ public class ClientController
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public void add(@Valid Client client, BindingResult result)
     {
-        if (result.hasErrors())
+        if (!result.hasErrors())
+        {
+            service.add(client);
+        }
+        else
         {
 
         }
-        else
-            service.add(client);
     }
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void update(@PathVariable int id, @Valid Client client, BindingResult result)
+    public void update(@Valid Client client, BindingResult result)
     {
-        if (result.hasErrors())
+        if (!result.hasErrors())
+        {
+            service.update(client);
+        }
+        else
         {
 
         }
-        else
-            service.update(client);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable int id)
     {
-        service.delete(id);
+        Client client = service.get(id);
+        if (client == null)
+        {
+
+        }
+        else
+            service.delete(service.get(id));
     }
 
 }

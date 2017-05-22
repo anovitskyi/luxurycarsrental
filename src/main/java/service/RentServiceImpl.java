@@ -14,7 +14,6 @@ import java.util.List;
 public class RentServiceImpl implements CommonService<Rent>
 {
     @Autowired
-    @Qualifier("rentDaoImpl")
     CommonDao<Rent> dao;
 
     @Override
@@ -42,8 +41,8 @@ public class RentServiceImpl implements CommonService<Rent>
     }
 
     @Override
-    public void delete(int id)
+    public void delete(Rent param)
     {
-        dao.delete(id);
+        dao.delete(param);
     }
 }
