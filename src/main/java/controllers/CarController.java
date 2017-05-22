@@ -40,6 +40,12 @@ public class CarController
             return new ResponseEntity<>(car, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public Car getEmptyForm()
+    {
+        return new Car("","", 1995, 0); // enabled in constructor
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public ResponseEntity<Void> add(@RequestBody @Valid Car car, BindingResult result)
     {

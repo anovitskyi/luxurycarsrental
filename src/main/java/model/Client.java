@@ -4,6 +4,7 @@ package model;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -26,10 +27,11 @@ public class Client
     private String lastName;
 
     @Column
+    @Min(18)
     private int age;
 
     @Column
-    private boolean male;
+    private boolean male; // true = male
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id")

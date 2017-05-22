@@ -114,17 +114,4 @@ public class Car
         this.returningDate = returningDate;
     }
 
-    @Override
-    public String toString()
-    {
-        return "Car{" +
-                "id=" + id +
-                ", company='" + company + '\'' +
-                ", model='" + model + '\'' +
-                ", year=" + year +
-                ", price=" + price +
-                ", isEnabled=" + isEnabled +
-                ", returningDate=" + returningDate +
-                '}';
-    }
 }
