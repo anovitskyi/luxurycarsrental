@@ -33,6 +33,7 @@ public class ClientController
     public ResponseEntity<Client> getById(@PathVariable int id)
     {
         Client client = service.get(id);
+        System.out.println(client);
         if (client == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         else
@@ -82,6 +83,7 @@ public class ClientController
     public ResponseEntity<Void> delete(@PathVariable int id)
     {
         Client client = service.get(id);
+        System.out.println("\n\n\n" + client + " \n\n\n");
         if (client == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         else

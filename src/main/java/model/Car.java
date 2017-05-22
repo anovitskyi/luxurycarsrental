@@ -13,7 +13,7 @@ import java.util.Date;
 public class Car
 {
     @Id
-    @Column
+    @Column(name = "car_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
@@ -52,6 +52,11 @@ public class Car
         this.year = year;
         this.price = price;
         this.isEnabled = true;
+    }
+
+    public int getId()
+    {
+        return id;
     }
 
     public String getCompany()
@@ -114,4 +119,17 @@ public class Car
         this.returningDate = returningDate;
     }
 
+    @Override
+    public String toString()
+    {
+        return "Car{" +
+                "id=" + id +
+                ", company='" + company + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", price=" + price +
+                ", isEnabled=" + isEnabled +
+                ", returningDate=" + returningDate +
+                '}';
+    }
 }

@@ -34,7 +34,7 @@ public class Client
     private boolean male; // true = male
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "car_id")
     private Car car;
 
     public Client()
@@ -47,6 +47,11 @@ public class Client
         this.lastName = lastName;
         this.age = age;
         this.male = male;
+    }
+
+    public int getId()
+    {
+        return id;
     }
 
     public String getFirstName()
@@ -97,5 +102,18 @@ public class Client
     public void setCar(Car car)
     {
         this.car = car;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Client{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", male=" + male +
+                ", car=" + car +
+                '}';
     }
 }
